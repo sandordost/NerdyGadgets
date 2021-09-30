@@ -5,9 +5,9 @@ include __DIR__ . "/header.php";
 <div class="IndexStyle">
     <div class="col-11">
         <div class="TextPrice">
-            <a href="view.php?id=93">
+            <a href="view.php?id=93"> TEST
                 <div class="TextMain">
-                    "test The Gu" red shirt XML tag t-shirt (Black) M
+                    "The Gu" red shirt XML tag t-shirt (Black) M
                 </div>
                 <ul id="ul-class-price">
                     <li class="HomePagePrice">€30.95</li>
