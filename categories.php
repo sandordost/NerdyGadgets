@@ -23,5 +23,5 @@ $StockGroups = getStockGroups($databaseConnection);
             }
             $i++;
         }
-    } ?>
+    } function b(){} ?>
 </div>
