@@ -8,7 +8,6 @@ $StockGroups = getStockGroups($databaseConnection);
 <div id="Wrap">
     <?php if (isset($StockGroups)) {
         $i = 0;
-        $a = 0;
         foreach ($StockGroups as $StockGroup) {
             if ($i < 6) {
                 ?>
@@ -24,5 +23,5 @@ $StockGroups = getStockGroups($databaseConnection);
             }
             $i++;
         }
-    } function b(){} ?>
+    } ?>
 </div>
