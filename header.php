@@ -3,6 +3,10 @@
 session_start();
 include "database.php";
 $databaseConnection = connectToDatabase();
+
+if (!isset($_SESSION['Winkelmand'])){
+    $_SESSION['Winkelmand'] = [];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,6 +55,9 @@ $databaseConnection = connectToDatabase();
         <ul id="ul-class-navigation">
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
+            </li>
+            <li>
+                <a href="winkelmand.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Winkelmand</a>
             </li>
         </ul>
 
