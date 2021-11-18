@@ -1,6 +1,5 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
-session_start();
 include "database.php";
 $databaseConnection = connectToDatabase();
 
@@ -57,7 +56,7 @@ if (!isset($_SESSION['Winkelmand'])){
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
             </li>
             <li>
-                <a href="winkelmand.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Winkelmand</a>
+                <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Winkelmand</a>
             </li>
         </ul>
 

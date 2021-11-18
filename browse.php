@@ -274,7 +274,6 @@ if (isset($amount)) {
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></h1>
                             <h6>Inclusief BTW </h6><br>
-                            <a href="winkelmand.php?add_item=<?php echo $row["StockItemID"]; ?>" class="StockItemPriceText"><?php ?>TOEVOEGEN</a>
                         </div>
                     </div>
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
