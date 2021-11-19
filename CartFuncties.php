@@ -28,14 +28,14 @@ function addProductToCart($stockItemID){
 
 function removeProductFromCart($stockItemID, $amount){
     $cart = getCart();
-
     if (isset($cart)) {
-        if ($amount > 0) {
+        if ($amount > 1) {
             $cart[$stockItemID] -= 1;
-        } elseif($amount < 0) {
-            unset($cart, $stockItemID);
-        }else {
-            unset($cart, $stockItemID);
+        } else {
+            unset($cart[$stockItemID]);
         }
+        saveCart($cart);
+        //echo "<script>location.href = 'cart.php'</script>";
+        header("location: cart.php");
     }
 }
