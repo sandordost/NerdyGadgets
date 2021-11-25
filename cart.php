@@ -1,17 +1,33 @@
 <?php
 include __DIR__ . "/header.php";
 include "cartfuncties.php";
+
+$cart = getCart();
+
 if (isset($_POST["submit"])) {
-    $stockItemID = $_POST["stockItemID"];
-    $amount = $_POST["amount"];
-    removeProductFromCart($stockItemID, $amount);
+    if ($_POST["submit"] == "Verwijderen") {
+        $stockItemID = $_POST["stockItemID"];
+        $amount = $_POST["amount"];
+        removeProductFromCart($stockItemID, $amount);
+    }
+    if ($_POST["submit"] == "Afrekenen") {
+        if (isset($cart)) {
+            if (count($cart) > 0) {
+                foreach ($cart as $item => $amount) {
+                    reduceStockItem($item, $amount, $databaseConnection);
+                    unset($cart[$item]);
+                    saveCart($cart);
+                }
+            } else {
+                echo "<script>alert('Test')</script>";
+            }
+        }
+    }
 }
 ?>
 <body>
 <h1>Inhoud Winkelwagen</h1>
 <?php
-
-$cart = getCart();
 
 if (isset($cart)) {
     foreach ($cart as $item => $amount){
@@ -86,6 +102,11 @@ if (isset($cart)) {
 if (isset($item)){
 
 ?>
+<br>
+<form method="post">
+    <input type="submit" name="submit" value="Afrekenen">
+</form>
+<br>
 <br>
 <p><a href='view.php?id=<?php print $item ?>'>Naar artikelpagina van artikel <?php print $item ?></a></p>
 </body>

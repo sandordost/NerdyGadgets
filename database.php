@@ -66,11 +66,10 @@ function getStockItem($id, $databaseConnection) {
             JOIN stockitemholdings SIH USING(stockitemid)
             JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
             JOIN stockgroups USING(StockGroupID)
-            WHERE SI.stockitemid = ?
+            WHERE SI.stockitemid = $id
             GROUP BY StockItemID";
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $id);
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
@@ -85,13 +84,23 @@ function getStockItemImage($id, $databaseConnection) {
     $Query = "
                 SELECT ImagePath
                 FROM stockitemimages 
-                WHERE StockItemID = ?";
+                WHERE StockItemID = $id";
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $id);
     mysqli_stmt_execute($Statement);
     $R = mysqli_stmt_get_result($Statement);
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
     return $R;
+}
+
+function reduceStockItem($id, $amount, $databaseConnection) {
+    $Query = "
+                UPDATE stockitemholdings
+                SET QuantityOnHand = QuantityOnHand - $amount
+                WHERE StockItemID = $id
+    ";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
 }
