@@ -96,7 +96,7 @@ function getStockItemImage($id, $databaseConnection) {
 
 function reduceStockItem($id, $amount, $databaseConnection) {
     $Query = "
-                UPDATE stockitemholdings
+                UPD ATE stockitemholdings
                 SET QuantityOnHand = QuantityOnHand - $amount
                 WHERE StockItemID = $id
     ";

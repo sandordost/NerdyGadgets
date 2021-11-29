@@ -26,7 +26,8 @@ if (isset($_POST["submit"])) {
 }
 ?>
 <body>
-<h1>Inhoud Winkelwagen</h1>
+    <div style="padding-right: 110px; padding-left: 110px">
+<h1 style="margin-top: 80px; margin-bottom: 20px">Inhoud Winkelwagen</h1>
 <?php
 
 if (isset($cart)) {
@@ -34,18 +35,19 @@ if (isset($cart)) {
         $product = getStockItem($item, $databaseConnection);
         $StockItemImage = getStockItemImage($item, $databaseConnection);
 
+        echo "<div style='margin-bottom: 40px'>";
 
         if (isset($StockItemImage)) {
             // één plaatje laten zien
             if (count($StockItemImage) == 1) {
                 ?>
                 <div id="ImageFrame"
-                     style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                     style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 150px; background-repeat: no-repeat; background-position: center; height: 150px; width: 200px"></div>
                 <?php
             } else if (count($StockItemImage) >= 2) { ?>
                 <!-- meerdere plaatjes laten zien -->
-                <div id="ImageFrame">
-                    <div id="ImageCarousel" class="carousel slide" data-interval="false">
+                <div id="ImageFrame" style="height: 150px; width: 200px">
+                    <div id="ImageCarousel" class="carousel slide" data-interval="false" style="height: 150px; width: 200px">
                         <!-- Indicators -->
                         <ul class="carousel-indicators">
                             <?php for ($i = 0; $i < count($StockItemImage); $i++) {
@@ -57,7 +59,7 @@ if (isset($cart)) {
                         </ul>
 
                         <!-- slideshow -->
-                        <div class="carousel-inner">
+                        <div class="carousel-inner" style="height: 150px">
                             <?php for ($i = 0; $i < count($StockItemImage); $i++) {
                                 ?>
                                 <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
@@ -84,31 +86,34 @@ if (isset($cart)) {
             <?php
         }
 
-
-        echo "$item, " . $product['StockItemName'] . ", " . $product['SearchDetails'];
-        echo ", Hoeveelheid $amount, Totaalprijs: $" . round($product['SellPrice'] * $amount, 2);
+        echo "<h2>" . $product['StockItemName'] . "</h2>";
+        echo "<br>Hoeveelheid $amount, Totaalprijs: $" . round($product['SellPrice'] * $amount, 2);
 
         ?>
 <form method="post">
 <input type="number" name="stockItemID" value="<?=$product["StockItemID"]?>" hidden>
 <input type="number" name="amount" value="<?=($amount)?>" hidden>
-<input type="submit" name="submit" value="Verwijderen">
+    <span><input type="submit" name="submit" value="Verwijderen" style="width: 200px; margin-top: 5px"></span>
 </form>
         <?php
         $laatsteitem = $item;
+
+        echo "</div>";
+
     }
 }
 
-if (isset($item)){
+if (count($cart) > 0){
 
 ?>
 <br>
 <form method="post">
-    <input type="submit" name="submit" value="Afrekenen">
+    <input type="submit" name="submit" value="Afrekenen" style="width: 300px " class="Knop">
 </form>
 <br>
 <br>
 <p><a href='view.php?id=<?php print $item ?>'>Naar artikelpagina van artikel <?php print $item ?></a></p>
+</div>
 </body>
 <?php
 }

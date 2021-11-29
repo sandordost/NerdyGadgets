@@ -478,3 +478,21 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+
+.Knop {
+    width: 380px;
+    height: 86px;
+    font-size: 36px;
+    background: linear-gradient(45deg, transparent 5%, rgb(36, 41, 143) 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 88px;
+    box-shadow: 6px 0px 0px WHITE;
+    outline: transparent;
+    position: relative;
+}
+
+.Knop:hover {
+    background: linear-gradient(45deg, transparent 5%, rgb(36, 41, 200) 5%);;
+}
