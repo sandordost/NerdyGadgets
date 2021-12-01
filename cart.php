@@ -18,9 +18,20 @@ if (isset($_POST["submit"])) {
                     unset($cart[$item]);
                     saveCart($cart);
                 }
+                echo "<script>alert('Uw bestelling word verwerkt')</script>";
             } else {
                 echo "<script>alert('Test')</script>";
             }
+        }
+    }
+    if ($_POST["submit"] == "Update") {
+        $stockItemID = $_POST["stockItemID"];
+        $amount = $_POST["amount"];
+        if ($amount < 1){
+            unset($cart[$stockItemID]);
+            saveCart($cart);
+        } else {
+            updateProductInCart($stockItemID, $amount);
         }
     }
 }
@@ -86,14 +97,19 @@ if (isset($cart)) {
             <?php
         }
 
-        echo "<h2>" . $product['StockItemName'] . "</h2>";
-        echo "<br>Hoeveelheid $amount, Totaalprijs: $" . round($product['SellPrice'] * $amount, 2);
+        echo "<h2><a style='color: white' href='view.php?id=" . $product['StockItemID'] . "'>" . $product['StockItemName'] . "</a></h2>";
+        echo "<br>Totaalprijs: $" . round($product['SellPrice'] * $amount, 2);
 
         ?>
 <form method="post">
-<input type="number" name="stockItemID" value="<?=$product["StockItemID"]?>" hidden>
-<input type="number" name="amount" value="<?=($amount)?>" hidden>
-    <span><input type="submit" name="submit" value="Verwijderen" style="width: 200px; margin-top: 5px"></span>
+    <input type="number" name="stockItemID" value="<?=$product["StockItemID"]?>" hidden>
+    Hoeveelheid <input type="number" name="amount" value="<?=($amount)?>" style="width: 100px; margin-top: 5px" max="<?=($product['Quantity'])?>">
+    <input type="submit" name="submit" value="Update" hidden>
+</form>
+<form method="post" style="width: 200px">
+    <input type="number" name="stockItemID" value="<?=$product["StockItemID"]?>" hidden>
+    <input type="number" name="amount" value="<?=($amount)?>" hidden>
+    <input type="submit" name="submit" value="Verwijderen" style="width: 200px; margin-top: 5px; display: inline">
 </form>
         <?php
         $laatsteitem = $item;
@@ -110,11 +126,11 @@ if (count($cart) > 0){
 <form method="post">
     <input type="submit" name="submit" value="Afrekenen" style="width: 300px " class="Knop">
 </form>
-<br>
-<br>
-<p><a href='view.php?id=<?php print $item ?>'>Naar artikelpagina van artikel <?php print $item ?></a></p>
-</div>
-</body>
 <?php
 }
 ?>
+</body>
+<br>
+<br>
+<br>
+<br>

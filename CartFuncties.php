@@ -39,3 +39,12 @@ function removeProductFromCart($stockItemID, $amount){
         header("location: cart.php");
     }
 }
+
+function updateProductInCart($stockItemID, $amount){
+    $cart = getCart();
+    if (isset($cart)) {
+        $cart[$stockItemID] = $amount;
+    }
+    saveCart($cart);
+    header("location: cart.php");
+}
