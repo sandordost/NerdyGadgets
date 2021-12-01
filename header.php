@@ -2,10 +2,6 @@
 <?php
 include "database.php";
 $databaseConnection = connectToDatabase();
-
-if (!isset($_SESSION['Winkelmand'])){
-    $_SESSION['Winkelmand'] = [];
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
