@@ -26,20 +26,6 @@ function addProductToCart($stockItemID){
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 }
 
-function removeProductFromCart($stockItemID, $amount){
-    $cart = getCart();
-    if (isset($cart)) {
-        if ($amount > 1) {
-            $cart[$stockItemID] -= 1;
-        } else {
-            unset($cart[$stockItemID]);
-        }
-        saveCart($cart);
-        //echo "<script>location.href = 'cart.php'</script>";
-        header("location: cart.php");
-    }
-}
-
 function updateProductInCart($stockItemID, $amount){
     $cart = getCart();
     if (isset($cart)) {

@@ -7,8 +7,8 @@ $cart = getCart();
 if (isset($_POST["submit"])) {
     if ($_POST["submit"] == "Verwijderen") {
         $stockItemID = $_POST["stockItemID"];
-        $amount = $_POST["amount"];
-        removeProductFromCart($stockItemID, $amount);
+        unset($cart[$stockItemID]);
+        saveCart($cart);
     }
     if ($_POST["submit"] == "Afrekenen") {
         if (isset($cart)) {
@@ -108,7 +108,6 @@ if (isset($cart)) {
 </form>
 <form method="post" style="width: 200px">
     <input type="number" name="stockItemID" value="<?=$product["StockItemID"]?>" hidden>
-    <input type="number" name="amount" value="<?=($amount)?>" hidden>
     <input type="submit" name="submit" value="Verwijderen" style="width: 200px; margin-top: 5px; display: inline">
 </form>
         <?php
