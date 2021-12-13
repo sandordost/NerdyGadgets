@@ -84,7 +84,8 @@ ul#ul-class-navigation li {
     border-bottom: 1px solid rgb(36, 41, 143);
 }
 #Content {
-    margin-top: 200px;
+    margin-top: 50px;
+    margin-right:0;
 }
 #FilterFrame {
     position: fixed;
