@@ -3,6 +3,7 @@ include __DIR__ . "/header.php";
 include "cartfuncties.php";
 
 $cart = getCart();
+arsort($cart);
 
 if (isset($_POST["submit"])) {
     if ($_POST["submit"] == "Verwijderen") {
@@ -10,27 +11,14 @@ if (isset($_POST["submit"])) {
         unset($cart[$stockItemID]);
         saveCart($cart);
     }
-    if ($_POST["submit"] == "Afrekenen") {
-        if (isset($cart)) {
-            if (count($cart) > 0) {
-                foreach ($cart as $item => $amount) {
-                    $product = getStockItem($item, $databaseConnection);
-                    if ($amount > $product['Quantity']) {
-                        echo "<script>alert('Niet genoeg voorraad van " . $product['StockItemName'] . " " . ($amount - $product['Quantity']) . "item te veel')</script>";
-                    } else {
-                        reduceStockItem($item, $amount, $databaseConnection);
-                        unset($cart[$item]);
-                        saveCart($cart);
-                    }
-                }
-                echo "<script>alert('Uw bestelling word verwerkt')</script>";
-            }
-        }
-    }
     if ($_POST["submit"] == "Update") {
         $stockItemID = $_POST["stockItemID"];
+        $product = $_POST["product"];
+        $quantity = $_POST["quantity"];
         $amount = $_POST["amount"];
-        if ($amount < 1) {
+        if ($amount > $quantity){
+            echo "<script>alert('Niet genoeg voorraad van " . $product . " " . ($amount - $quantity) . " item te veel')</script>";
+        } elseif ($amount < 1) {
             unset($cart[$stockItemID]);
             saveCart($cart);
         } else {
@@ -106,11 +94,13 @@ if (isset($_POST["submit"])) {
     }
 
     echo "<h2><a style='color: white' href='view.php?id=" . $product['StockItemID'] . "'>" . $product['StockItemName'] . "</a></h2>";
-    echo "<br>Totaalprijs: €" . round($product['SellPrice'] * $amount, 2);
+    echo "<br>Totaalprijs: €" . number_format($product['SellPrice'] * $amount, 2);
 
     ?>
     <form method="post">
         <input type="number" name="stockItemID" value="<?= $product["StockItemID"] ?>" hidden>
+        <input type="number" name="quantity" value="<?= $product["Quantity"] ?>" hidden>
+        <input type="text" name="product" value="<?= $product["StockItemName"] ?>" hidden>
         Hoeveelheid <input type="number" name="amount" value="<?= ($amount) ?>"
                            style="width: 100px; margin-top: 5px" max="<?= ($product['Quantity']) ?>">
         <input type="submit" name="submit" value="Update" hidden>
@@ -127,7 +117,7 @@ if (isset($_POST["submit"])) {
 
 if (count($cart) > 0) { ?>
     <br>
-    <form method="post">
+    <form method="post" action="checkout.php">
         <input type="submit" name="submit" value="Afrekenen" style="width: 300px " class="Knop">
     </form>
 <?php } ?>
