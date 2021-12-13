@@ -77,7 +77,16 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
+            <div class="QuantityText">
+                <?php 
+                if ($StockItem['Quantity'] < 100){ 
+                    echo $StockItem['QuantityOnHand']; 
+                } else { 
+                    echo "<h3>Let op! Beperkte voorraad!</h3>"; 
+                    echo "<h3>Minder dan 100 op voorraad</h3>";
+                }; 
+                ?>
+            </div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
