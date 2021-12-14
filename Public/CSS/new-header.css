@@ -49,7 +49,8 @@
     justify-content: center;
     flex-direction: column;
     align-items: flex-end;
-    padding-left:40px
+    padding-left:40px;
+    cursor: pointer;
 }
 
 #account-container #profile-image{
@@ -57,6 +58,7 @@
     width:100px;
     padding-left:20px;
     align-items: center;
+    cursor: pointer;
 }
 #account-container #profile-image .fa-user{
     font-size:45px;
@@ -80,4 +82,54 @@
 #account-container #profile-info #shopping-cart-container .search{
     padding-right: 5px;
     font-size:14px;
+}
+#account-popup.hidden{
+    display:none;
+}
+#account-popup{
+    display:flex;
+    background-color: rgb(51, 51, 66);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.63);
+    width:500px;
+    position: absolute;
+    right:0;
+    flex-direction: column;
+    padding: 15px;
+}
+
+#account-popup .login, #account-popup .register{
+
+}
+
+#account-popup .login{
+    margin-top:10px;
+}
+
+#account-popup .register{
+    margin-top: 20px;
+}
+
+#account-popup .login-button, #account-popup .register-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width:150px;
+    height:35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.47);
+    margin-top:5px;
+}
+#account-popup .login-button a, #account-popup .register-button a{
+    color:white;
+}
+#account-popup #title{
+    font-size:20px;
+}
+
+#account-popup .login-button{
+    background-color: #44623c;
+}
+#account-popup .register-button{
+    background-color: #3c4962;
 }
