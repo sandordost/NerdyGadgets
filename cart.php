@@ -35,9 +35,8 @@ if (isset($_POST["submit"])) {
     <?php
 
     if (isset($cart)) {
-    foreach ($cart
-
-    as $item => $amount) {
+    $totaalprijs = 0;
+    foreach ($cart as $item => $amount) {
     $product = getStockItem($item, $databaseConnection);
     $StockItemImage = getStockItemImage($item, $databaseConnection);
 
@@ -112,7 +111,15 @@ if (isset($_POST["submit"])) {
     </form>
 </div>
 <?php
+$totaalprijs += ($product['SellPrice'] * $amount);
 }
+}
+if (isset($totaalprijs)){
+    ?>
+    <h6><?php if($totaalprijs < 30){ echo "€" . number_format((30 - $totaalprijs), 2) . " extra benodigd voor gratis verzending<br>€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
+    <hr style="background: white; width: 250px; margin-left: 0; margin-top: -5px; border: 1px solid; margin-bottom: 0   ;">
+    <h4>Totaal: €<b><?= round($totaalprijs, 2) ?></b></h4>
+    <?php 
 }
 
 if (count($cart) > 0) { ?>
