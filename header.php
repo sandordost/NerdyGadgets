@@ -21,6 +21,7 @@ $databaseConnection = connectToDatabase();
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/typekit.css">
     <link rel="stylesheet" href="Public/CSS/new-header.css">
+    <link rel="stylesheet" href="Public/CSS/registratie-pagina.css">
 </head>
 <body>
     <div class="new-header">
@@ -78,7 +79,7 @@ $databaseConnection = connectToDatabase();
         <div class="register">
             <span class="register-text">Ben je nog <b>geen klant</b>, klik dan op registreren</span>
             <div class="register-button">
-                <a href="" class="register-button-text">Registreren</a>
+                <a href="registratie.php" class="register-button-text">Registreren</a>
             </div>
         </div>
     </div>
@@ -87,7 +88,7 @@ $databaseConnection = connectToDatabase();
 <!-- einde code voor US3 zoeken -->
     </div>
     <div class="row" id="Content">
-        <div class="col-12">
+        <div id="content-1th-child" class="col-12">
             <div id="SubContent">
 
 

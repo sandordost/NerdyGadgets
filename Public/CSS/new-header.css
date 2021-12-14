@@ -94,7 +94,8 @@
     position: absolute;
     right:0;
     flex-direction: column;
-    padding: 15px;
+    padding: 15px 15px 30px 15px;
+    z-index: 1;
 }
 
 #account-popup .login, #account-popup .register{
@@ -102,7 +103,7 @@
 }
 
 #account-popup .login{
-    margin-top:10px;
+    margin-top:5px;
 }
 
 #account-popup .register{
