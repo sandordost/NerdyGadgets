@@ -6,7 +6,7 @@ include "header.php";
 </div>
 
 <!-- melding balk -->
-    <div class="warning-message">
+    <div id="warning-message" class="warning-message hidden">
         <span id="message">Er is een fout opgetreden</span>
     </div>
 
@@ -17,7 +17,11 @@ include "header.php";
 <div class="register-page-content">
     <div class="register-container">
         <span id="register-container-title">Registreren</span>
-        <form action="" method="post">
+        <form action="registratie-handler.php" method="post" name="register-form">
+            <div class="subtitle-container">
+                <span class="subtitle">Account gegevens</span>
+            </div>
+
             <div class="inputwithlabel">
                 <label for="email-input">Email adres</label>
                 <input placeholder="voorbeeld@voorbeeld.nl" type="email" name="email" id="email-input">
@@ -31,6 +35,10 @@ include "header.php";
             <div class="inputwithlabel">
                 <label for="password-repeat-input">Herhaal wachtwoord</label>
                 <input placeholder="wachtwoord" type="password" name="password-repeat" id="password-repeat-input">
+            </div>
+
+            <div class="subtitle-container">
+                <span class="subtitle">Persoonlijke gegevens</span>
             </div>
 
             <div class="inputwithlabel">
@@ -305,7 +313,7 @@ include "header.php";
 
             <div class="inputwithlabel">
                 <label for="postcode-input">Postcode</label>
-                <input placeholder="1234AB XZ" type="text" name="zipcode" id="postcode-input">
+                <input placeholder="1234AB XZ" type="text" name="postcode" id="postcode-input">
             </div>
 
             <div class="inputwithlabel">

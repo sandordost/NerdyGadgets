@@ -53,7 +53,7 @@
 }
 
 .register-container .inputwithlabel label{
-    color:black;
+    color: #5d5d5d;
     margin-bottom: 0;
 }
 
@@ -71,4 +71,15 @@
     font-weight: bold;
     padding-bottom:10px;
     margin-top:5px;
+}
+
+.register-container .subtitle-container{
+    color:black;
+    margin-top:15px;
+    font-size:18px;
+    margin-bottom: 10px;
+}
+
+.warning-message.hidden{
+    display:none;
 }
