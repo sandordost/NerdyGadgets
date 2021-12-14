@@ -86,8 +86,24 @@ $databaseConnection = connectToDatabase();
             </div>
         </div>
         <div id="login-popup" class="hidden">
-            <div id="login-return-button">
-                <
+            <div class="login-popup-row">
+                <span class="login-popup-title">Inloggen</span>
+            </div>
+            <div class="login-popup-row">
+                <form action="login.php" method="post">
+                    <div class="input-row">
+                        <label for="login-email-input">Emailadres</label>
+                        <input type="email" name="email" id="login-email-input">
+                    </div>
+                    <div class="input-row">
+                        <label for="login-email-input">Wachtwoord</label>
+                        <input type="password" name="wachtwoord" id="login-wachtwoord-input">
+                    </div>
+                    <div class="input-row">
+                        <input type=submit value="Inloggen" id="login-button" class="login-button">
+                        <div id="login-return-button"><</div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

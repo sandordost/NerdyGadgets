@@ -153,3 +153,48 @@
     cursor: pointer;
     border-radius: 10px;
 }
+
+#account-popup #login-popup:before{
+    display:flex;
+}
+
+#account-popup .login-popup-row{
+    display:flex;
+    justify-content: space-between;
+}
+
+#account-popup .login-popup-row .login-button{
+    margin-top:0;
+    color:white;
+}
+
+#account-popup #login-popup .login-popup-row .input-row{
+    display:flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#account-popup #login-popup .login-popup-row .input-row input{
+    width:300px;
+    border: 2px black;
+    border-radius: 10px;
+    margin-top:5px;
+    height:35px;
+}
+
+#account-popup #login-popup .login-popup-row form{
+    width:100%;
+}
+#account-popup #login-popup .login-popup-row:nth-child(2){
+    margin-top: 20px;
+}
+
+#account-popup #login-popup .input-row:last-child{
+    margin-top: 10px;
+}
+
+#account-popup #login-popup .login-popup-title{
+    font-size:20px;
+    font-weight: bold;
+}
