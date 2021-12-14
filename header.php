@@ -67,19 +67,27 @@ $databaseConnection = connectToDatabase();
             </div>
         </div>
     </div>
-    <!-- Account popup -->
+
+<!-- Account popup -->
     <div id="account-popup" class="hidden">
-        <span id="title">Je bent nog niet ingelogd</span>
-        <div class="login">
-            <span class="login-text">Ben je al <b>klant</b>, log dan hier in</span>
-            <div class="login-button">
-                <a href="">Inloggen</a>
+        <div id="register-login-popup">
+            <span id="title">Je bent nog niet ingelogd</span>
+            <div class="login">
+                <span class="login-text">Ben je al <b>klant</b>, log dan hier in</span>
+                <div id="goto-login-button" class="login-button">
+                    <a>Inloggen</a>
+                </div>
+            </div>
+            <div class="register">
+                <span class="register-text">Ben je nog <b>geen klant</b>, klik dan op registreren</span>
+                <div class="register-button">
+                    <a href="registratie.php" class="register-button-text">Registreren</a>
+                </div>
             </div>
         </div>
-        <div class="register">
-            <span class="register-text">Ben je nog <b>geen klant</b>, klik dan op registreren</span>
-            <div class="register-button">
-                <a href="registratie.php" class="register-button-text">Registreren</a>
+        <div id="login-popup" class="hidden">
+            <div id="login-return-button">
+                <
             </div>
         </div>
     </div>

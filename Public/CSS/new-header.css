@@ -130,7 +130,26 @@
 
 #account-popup .login-button{
     background-color: #44623c;
+    cursor: pointer;
 }
 #account-popup .register-button{
     background-color: #3c4962;
+}
+
+#account-popup .hidden{
+    display:none;
+}
+
+#account-popup #login-return-button{
+    width:35px;
+    height:35px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.63);
+    color: #212121;
+    font-size:17px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
 }
