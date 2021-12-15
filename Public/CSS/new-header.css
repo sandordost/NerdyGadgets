@@ -1,0 +1,237 @@
+.new-header{
+    background-color:white;
+    width:100%;
+    height:125px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(42, 42, 56);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.63);
+    position: relative;
+    z-index: 2;
+}
+.new-header .left-bar{
+    display:flex;
+}
+
+.new-header .right-bar{
+    display: flex;
+    align-items: center;
+}
+
+.new-header .search-bar{
+    padding-right: 20px;
+}
+.new-header .logo{
+    display:flex;
+    align-items: center;
+}
+
+.new-header .categories{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-self: flex-start;
+}
+
+.new-header .categories .category{
+    padding: 0 10px 0 10px;
+}
+
+#account-container{
+    float: right;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    background-color: rgb(51, 51, 66);
+}
+
+#account-container > #profile-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left:40px;
+    cursor: pointer;
+}
+
+#account-container #profile-image{
+    display:flex;
+    width:100px;
+    padding-left:20px;
+    align-items: center;
+    cursor: pointer;
+}
+#account-container #profile-image .fa-user{
+    font-size:45px;
+    color: #d3d3d3;
+}
+
+#account-container #profile-info #account-naam{
+    text-decoration: none;
+    color:white;
+    font-size:20px;
+}
+
+#account-container #profile-info #shopping-cart-container{
+    background-color: #464659;
+    padding: 0 5px 0 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+}
+#account-container #profile-info #shopping-cart-container .search{
+    padding-right: 5px;
+    font-size:14px;
+}
+#account-container #profile-info #shopping-cart-container #mijn-winkelmand{
+    color: #ffffff;
+}
+
+#account-popup.hidden{
+    display:none;
+}
+#account-popup{
+    display:flex;
+    background-color: rgb(51, 51, 66);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.63);
+    width:500px;
+    position: absolute;
+    right:0;
+    flex-direction: column;
+    padding: 15px 15px 30px 15px;
+    z-index: 3;
+    top:125px;
+}
+
+#account-popup .login{
+    margin-top:5px;
+}
+
+#account-popup .login .login-text{
+    color: #b4b4b4;
+}
+
+#account-popup .register{
+    margin-top: 20px;
+}
+#account-popup .register .register-text{
+    color: #b4b4b4;
+}
+
+#account-popup .login-button, #account-popup .register-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width:150px;
+    height:35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.47);
+    margin-top:5px;
+}
+#account-popup .login-button a, #account-popup .register-button a{
+    color:white;
+}
+#account-popup #title{
+    font-size:20px;
+}
+
+#account-popup .login-button{
+    background-color: #44623c;
+    cursor: pointer;
+}
+#account-popup .register-button{
+    background-color: #3c4962;
+}
+
+#account-popup .hidden{
+    display:none;
+}
+
+#account-popup #login-return-button{
+    width:35px;
+    height:35px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.63);
+    color: #212121;
+    font-size:17px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#account-popup #login-popup:before{
+    display:flex;
+}
+
+#account-popup .login-popup-row{
+    display:flex;
+    justify-content: space-between;
+}
+
+#account-popup .login-popup-row .login-button{
+    margin-top:0;
+    color:white;
+}
+
+#account-popup #login-popup .login-popup-row .input-row{
+    display:flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#account-popup #login-popup .login-popup-row .input-row input{
+    width:300px;
+    border: 2px black;
+    border-radius: 10px;
+    margin-top:5px;
+    height:35px;
+}
+
+#account-popup #login-popup .login-popup-row form{
+    width:100%;
+}
+#account-popup #login-popup .login-popup-row:nth-child(2){
+    margin-top: 20px;
+}
+
+#account-popup #login-popup .input-row:last-child{
+    margin-top: 10px;
+}
+
+#account-popup #login-popup .login-popup-title{
+    font-size:20px;
+    font-weight: bold;
+}
+#account-popup #logout-button{
+    background-color: #641e1e;
+    cursor: pointer;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width:150px;
+    height:35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.47);
+    margin-top:5px;
+}
+#info-row{
+    background-color: #588846;
+    width:100%;
+    height:30px;
+    position: relative;
+    z-index:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#info-row #info-row-text{
+    color:rgb(35, 35, 47);
+}
+#info-row i{
+    padding: 0 5px 0 5px;
+}

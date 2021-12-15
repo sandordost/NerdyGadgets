@@ -11,7 +11,7 @@ body {
     font-family: MmrText;
     src: url(/Public/fonts/mmrtext.ttf);
 }
-select {
+#country select {
     margin: 50px;
     width: 100%;
     padding: 5px 35px 5px 5px;
@@ -84,7 +84,9 @@ ul#ul-class-navigation li {
     border-bottom: 1px solid rgb(36, 41, 143);
 }
 #Content {
-    margin-top: 200px;
+    margin-top: 50px;
+    margin-right:0;
+    margin-left:0;
 }
 #FilterFrame {
     position: fixed;
