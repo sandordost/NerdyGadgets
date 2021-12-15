@@ -1,0 +1,55 @@
+/*#region Product overview*/
+.ListItem #ProductFrame{
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+    background-color: rgb(23, 23, 31);
+}
+
+.ListItem .ImgFrame{
+    border:none;
+    border-radius: 20px;
+}
+
+.ListItem .StockItemID,
+.ListItem .StockItemName,
+.ListItem .StockItemComments{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    position:relative;
+    left:20px;
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild{
+    top: 80%;
+    right:20px;
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h1,
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h6{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h1{
+    font-weight: bold;
+    font-size:25px;
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h6{
+    font-weight: normal;
+}
+
+.ListItem .StockItemComments{
+    font-weight: normal;
+}
+
+.ListItem .ItemQuantity{
+    position:relative;
+    left:20px;
+}
+/*#endregion*/
+/*#region filter */
+#FilterFrame{
+    border:none;
+    background-color: rgb(56, 56, 72);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+}
+/*#endregion */
