@@ -6,6 +6,8 @@
     justify-content: space-between;
     background-color: rgb(42, 42, 56);
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.63);
+    position: relative;
+    z-index: 2;
 }
 .new-header .left-bar{
     display:flex;
@@ -80,6 +82,10 @@
     padding-right: 5px;
     font-size:14px;
 }
+#account-container #profile-info #shopping-cart-container #mijn-winkelmand{
+    color:white;
+}
+
 #account-popup.hidden{
     display:none;
 }
@@ -92,11 +98,8 @@
     right:0;
     flex-direction: column;
     padding: 15px 15px 30px 15px;
-    z-index: 1;
-}
-
-#account-popup .login, #account-popup .register{
-
+    z-index: 3;
+    top:125px;
 }
 
 #account-popup .login{
@@ -215,4 +218,20 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.47);
     margin-top:5px;
+}
+#info-row{
+    background-color: #588846;
+    width:100%;
+    height:30px;
+    position: relative;
+    z-index:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#info-row #info-row-text{
+    color:white;
+}
+#info-row i{
+    padding: 0 5px 0 5px;
 }

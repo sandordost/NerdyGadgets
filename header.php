@@ -76,6 +76,9 @@ if($currentUser != null){
             </div>
         </div>
     </div>
+    <div id="info-row">
+        <span id="info-row-text"><i class="fas fa-fire-alt fa-rotate-270"></i><i class="fas fa-sleigh"></i><b>Gratis verzendkosten</b> bij besteding van <u>minimaal 30 euro</u></span>
+    </div>
 
 <!-- Account popup -->
     <div id="account-popup" class="hidden">
