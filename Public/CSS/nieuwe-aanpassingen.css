@@ -1,3 +1,8 @@
+/*#region all pages */
+#Content{
+    margin-top:0;
+}
+/*#endregion */
 /*#region Product overview*/
 .ListItem #ProductFrame{
     border: none;
@@ -45,11 +50,36 @@
     position:relative;
     left:20px;
 }
+
+#SubContent #ResultsArea{
+    margin-top:20px;
+}
 /*#endregion*/
 /*#region filter */
 #FilterFrame{
     border:none;
+    height:100%;
     background-color: rgb(56, 56, 72);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+    position:absolute;
+    margin-left: 0;
+    left:0;
+    top:0;
+    margin-top:0;
+    padding-top:50px;
+    z-index: 0;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.40);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55); */
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed !important;
+    top: 0;
+    width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
 }
 /*#endregion */

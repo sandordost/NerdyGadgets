@@ -331,7 +331,7 @@ if (isset($amount)) {
     }
     ?>
 </div>
-
+<script src="Public/JS/sticky-filter.js"></script>
 <?php
 include __DIR__ . "/footer.php";
 ?>
