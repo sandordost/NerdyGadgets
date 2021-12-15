@@ -83,7 +83,7 @@
     font-size:14px;
 }
 #account-container #profile-info #shopping-cart-container #mijn-winkelmand{
-    color:white;
+    color: #ffffff;
 }
 
 #account-popup.hidden{
@@ -230,7 +230,7 @@
     align-items: center;
 }
 #info-row #info-row-text{
-    color:white;
+    color:rgb(35, 35, 47);
 }
 #info-row i{
     padding: 0 5px 0 5px;
