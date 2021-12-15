@@ -64,9 +64,6 @@
     font-size:45px;
     color: #d3d3d3;
 }
-#account-container #profile-info #account-naam, #mijn-winkelmand{
-
-}
 
 #account-container #profile-info #account-naam{
     text-decoration: none;
@@ -106,8 +103,15 @@
     margin-top:5px;
 }
 
+#account-popup .login .login-text{
+    color: #b4b4b4;
+}
+
 #account-popup .register{
     margin-top: 20px;
+}
+#account-popup .register .register-text{
+    color: #b4b4b4;
 }
 
 #account-popup .login-button, #account-popup .register-button{
@@ -197,4 +201,18 @@
 #account-popup #login-popup .login-popup-title{
     font-size:20px;
     font-weight: bold;
+}
+#account-popup #logout-button{
+    background-color: #641e1e;
+    cursor: pointer;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width:150px;
+    height:35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.47);
+    margin-top:5px;
 }

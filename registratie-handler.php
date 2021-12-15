@@ -43,16 +43,3 @@ if(isset($email)){
 else{
     header("location: registratie.php?error=1");
 }
-
-//Maak de gebruiker aan in de database
-function CreateUser($email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam, $adres, $land, $postcode, $phone)
-{
-    $Connection = connectToDatabase();
-
-    $sql = "INSERT INTO klant (email, password, voornaam, tussenvoegsel, achternaam, adres, land, postcode, telefoon) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    $stmt = $Connection->prepare($sql);
-    $stmt->bind_param('sssssssss', $email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam,
-        $adres, $land, $postcode, $phone);
-    $stmt->execute();
-}

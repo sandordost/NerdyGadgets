@@ -5,6 +5,7 @@ const loginOrRegisterScreen = document.getElementById("register-login-popup");
 const loginScreen = document.getElementById("login-popup");
 const gotoLoginButton = document.getElementById("goto-login-button");
 const loginReturnButton = document.getElementById("login-return-button");
+const logoutButton = document.getElementById("logout-button");
 
 let accountPopupOpen = false;
 let loginPopupOpen = false;
