@@ -114,19 +114,25 @@ if (isset($_POST["submit"])) {
 $totaalprijs += ($product['SellPrice'] * $amount);
 }
 }
+if (count($cart) > 0) { 
 if (isset($totaalprijs)){
     ?>
     <h6><?php if($totaalprijs < 30){ echo "€" . number_format((30 - $totaalprijs), 2) . " extra benodigd voor gratis verzending<br>€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
     <hr style="background: white; width: 250px; margin-left: 0; margin-top: -5px; border: 1px solid; margin-bottom: 0   ;">
-    <h4>Totaal: €<b><?= round($totaalprijs, 2) ?></b></h4>
+    <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
     <?php 
 }
-
-if (count($cart) > 0) { ?>
+?>
     <br>
     <form method="post" action="checkout.php">
         <input type="submit" name="submit" value="Afrekenen" style="width: 300px " class="Knop">
     </form>
-<?php } ?>
+<?php 
+} else { ?>
+    <h4>Uw winkelwagen is leeg.</h4>
+    <h4>Zoek <a href="categories.php">hier</a> naar producten</h4>
+<?php
+}
+ ?>
 <br><br><br><br>
 </body>

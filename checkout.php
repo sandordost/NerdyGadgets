@@ -23,7 +23,8 @@ if (isset($_POST["submit"])) {
                 <input style="width: 32.9%" type="text" class="checkoutInput" name="achternaam" value="<?=''?>" id="achternaam" placeholder="Achternaam*" required>
                 <input type="email" class="checkoutInput" name="emailadres" value="<?=''?>" id="emailadres" placeholder="E-mailadres*" required>
                 <input type="text" class="checkoutInput" name="adres" value="<?=''?>" id="adres" placeholder="Adres*" required>
-                <select style="width: 60%" class="checkoutInput" id="country" name="country">
+                <select style="width: 60%;" class="checkoutInput" id="country" name="country" required>
+                    <option value="" selected disabled>Land*</option>
                     <option value="Afganistan">Afghanistan</option>
                     <option value="Albania">Albania</option>
                     <option value="Algeria">Algeria</option>
@@ -274,14 +275,15 @@ if (isset($_POST["submit"])) {
                 <input style="width: 39.3%" type="text" class="checkoutInput" name="postcode" value="<?=''?>" id="postcode" placeholder="Postcode*" required>
                 <input type="text" class="checkoutInput" name="woonplaats" value="<?=''?>" id="woonplaats" placeholder="Woonplaats*" required>
                 <input type="number" class="checkoutInput" name="telefoon" value="<?=''?>" id="telefoon" placeholder="Telefoonnummer (optioneel)">
-                <select class="checkoutInput" id="betalingswijze" name="betalingswijze">
+                <select class="checkoutInput" id="betalingswijze" name="betalingswijze" required>
+                    <option value="" disabled selected>Betalingswijze*</option>
                     <option value="ideal">iDEAL</option>
                     <option value="paypal">PayPal</option>
                     <option value="klarna">Klarna</option>
                     <option value="creditcard">Credit Card</option>
                     <option value="bankoverschrift">Bankoverschrift</option>
-                    <option value="Afganistan">Achteraf Betalen</option>
-                    <option value="Afganistan">Bancontact</option>
+                    <option value="achteraf">Achteraf Betalen</option>
+                    <option value="bancontact">Bancontact</option>
                 </select><br><br>
                 <input type="submit" name="submit" value="Bestelling Plaatsen" class="Knop" style="width: 250px; height: 50px; font-size: 20px; line-height: 0;">
                 <a href="cart.php"><input type="button" value="Annuleren" class="KnopReversed" style="width: 250px; height: 50px; font-size: 20px; line-height: 0; float: right"></a>
@@ -321,9 +323,9 @@ if (isset($_POST["submit"])) {
             }
             if (isset($totaalprijs)){
             ?>
-            <h6><?php if($totaalprijs < 30){ echo "€" . number_format((30 - $totaalprijs), 2) . " extra benodigd voor gratis verzending<br>€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
+            <h6><?php if($totaalprijs < 30){ echo "€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
             <hr style="background: white; width: 250px; margin-left: 0; margin-top: -5px; border: 1px solid; margin-bottom: 0   ;">
-            <h4>Totaal: €<b><?= round($totaalprijs, 2) ?></b></h4>
+            <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
             <?php } ?>
         </div>
     </div>
