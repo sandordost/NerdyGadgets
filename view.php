@@ -79,7 +79,7 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
             </h2>
             <div class="QuantityText">
                 <?php 
-                if ($StockItem['Quantity'] < 100){ 
+                if ($StockItem['Quantity'] > 100){
                     echo $StockItem['QuantityOnHand']; 
                 } else { 
                     echo "<h3>Let op! Beperkte voorraad!</h3>"; 
