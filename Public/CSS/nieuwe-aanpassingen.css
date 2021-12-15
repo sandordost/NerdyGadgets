@@ -7,7 +7,7 @@
 .ListItem #ProductFrame{
     border: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
-    background-color: rgb(23, 23, 31);
+    background-color: rgb(44, 44, 59);
 }
 
 .ListItem .ImgFrame{
@@ -82,4 +82,34 @@
 .sticky + .content {
     padding-top: 102px;
 }
+
+#FilterFrame .FilterText{
+    font-size:22px;
+}
+
+#FilterFrame #FilterOptions .FilterTopMargin{
+    font-size:17px;
+    color: #e7e7e7;
+}
+
+#FilterFrame #FilterOptions #search_string{
+    border:none;
+    border-radius: 5px;
+    height:30px;
+    font-size:14px;
+}
+
+#FilterFrame #FilterOptions #products_on_page{
+
+}
+
+#FilterFrame #FilterOptions #products_on_page,
+#FilterFrame #FilterOptions #sort{
+    cursor: pointer;
+    border:none;
+    border-radius: 5px;
+    width:100%;
+    height:30px;
+}
+
 /*#endregion */
