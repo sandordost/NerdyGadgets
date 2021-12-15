@@ -62,6 +62,16 @@ include "header.php";
             </div>
 
             <div class="inputwithlabel">
+                <label for="postcode-input">Postcode</label>
+                <input placeholder="1234AB XZ" type="text" name="postcode" id="postcode-input">
+            </div>
+
+            <div class="inputwithlabel">
+                <label for="woonplaats-input">Woonplaats</label>
+                <input placeholder="stad" type="text" name="woonplaats" id="woonplaats-input">
+            </div>
+
+            <div class="inputwithlabel">
                 <label for="land-input">Land</label>
                 <select id="land-input" name="land">
                 <option value="Afghanistan">Afghanistan</option>
@@ -309,11 +319,6 @@ include "header.php";
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
             </select>
-            </div>
-
-            <div class="inputwithlabel">
-                <label for="postcode-input">Postcode</label>
-                <input placeholder="1234AB XZ" type="text" name="postcode" id="postcode-input">
             </div>
 
             <div class="inputwithlabel">

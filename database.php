@@ -137,7 +137,7 @@ function verifyUser($email, $password){
 }
 
 //Maakt de gebruiker aan in de database
-function CreateUser($email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam, $adres, $land, $postcode, $phone)
+function CreateUser($email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam, $adres, $land, $postcode, $phone, $woonplaats)
 {
     $Connection = connectToDatabase();
 
@@ -146,11 +146,11 @@ function CreateUser($email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam,
 
     $encryptedPass = encryptPassword($wachtwoord, $salt, $pepper);
 
-    $sql = "INSERT INTO klant (email, password, voornaam, tussenvoegsel, achternaam, adres, land, postcode, telefoon, salt) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $sql = "INSERT INTO klant (email, password, voornaam, tussenvoegsel, achternaam, adres, land, postcode, telefoon, salt, woonplaats) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = $Connection->prepare($sql);
-    $stmt->bind_param('ssssssssss', $email, $encryptedPass, $voornaam, $tussenvoegsel, $achternaam,
-        $adres, $land, $postcode, $phone, $salt);
+    $stmt->bind_param('sssssssssss', $email, $encryptedPass, $voornaam, $tussenvoegsel, $achternaam,
+        $adres, $land, $postcode, $phone, $salt, $woonplaats);
     $stmt->execute();
 }
 
