@@ -27,6 +27,7 @@ if($currentUser != null){
     <link rel="stylesheet" href="Public/CSS/typekit.css">
     <link rel="stylesheet" href="Public/CSS/new-header.css">
     <link rel="stylesheet" href="Public/CSS/registratie-pagina.css">
+    <link rel="icon" type="image/x-icon" href="Public/Img/NerdyGadgetsLogo.ico">
 </head>
 <body>
     <div class="new-header">
