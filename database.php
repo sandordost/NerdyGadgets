@@ -64,7 +64,8 @@ function getStockItem($id, $databaseConnection) {
             QuantityOnHand as Quantity,
             SearchDetails, 
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
-            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
+            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath,
+            TaxRate   
             FROM stockitems SI 
             JOIN stockitemholdings SIH USING(stockitemid)
             JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
@@ -201,4 +202,31 @@ function encryptPassword($password, $salt, $pepper){
 
 function generatePepper(){
     return chr(rand(65,90));
+}
+
+function CreateOrder($voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, $bestellingsdatum)
+{
+    $Connection = connectToDatabase();
+
+    $sql = "INSERT INTO bestelling (Voornaam, Tussenvoegsel, Achternaam, Emailadres, Adres, Land, Postcode, Woonplaats, Telefoon, Betalingswijze, Bestellingsdatum) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        ";
+    $stmt = $Connection->prepare($sql);
+    $stmt->bind_param('sssssssssss', $voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, $bestellingsdatum);
+    $stmt->execute();
+
+
+    return $stmt->insert_id;
+}
+
+function CreateOrderLine($BestellingID, $StockItemID, $Beschrijving, $Hoeveelheid, $Prijs, $BTW)
+{
+    $Connection = connectToDatabase();
+
+    $sql = "INSERT INTO bestellingslijn (BestellingID, StockItemID, Beschrijving, Hoeveelheid, Prijs, BTW) 
+        VALUES (?, ?, ?, ?, ?, ?);
+        ";
+    $stmt = $Connection->prepare($sql);
+    $stmt->bind_param('ssssss', $BestellingID, $StockItemID, $Beschrijving, $Hoeveelheid, $Prijs, $BTW);
+    $stmt->execute();
 }

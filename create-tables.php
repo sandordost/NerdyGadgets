@@ -27,8 +27,16 @@ function createKlant($conn) {
 function createBestelling($conn) {
     $sql = "CREATE TABLE IF NOT EXISTS bestelling(
         BestellingID INT PRIMARY KEY AUTO_INCREMENT,
-        KlantID INT NOT NULL,
-        Betalingsmethode VARCHAR(30) NOT NULL,
+        Voornaam VARCHAR(100) NOT NULL,
+        Tussenvoegsel VARCHAR(50),
+        Achternaam VARCHAR(120) NOT NULL,
+        Emailadres VARCHAR(100) NOT NULL,
+        Adres VARCHAR(200) NOT NULL,
+        Land VARCHAR(100) NOT NULL,
+        Postcode VARCHAR(10) NOT NULL,
+        Woonplaats VARCHAR(120) NOT NULL,
+        Telefoon VARCHAR(30),
+        Betalingswijze VARCHAR(30) NOT NULL,
         Bestellingsdatum DATE NOT NULL,
         Verzonden TINYINT(1),
         Betaald TINYINT(1)

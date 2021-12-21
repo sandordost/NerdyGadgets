@@ -5,8 +5,37 @@ include "cartfuncties.php";
 $cart = getCart();
 arsort($cart);
 
+if(count($cart) < 1){
+    echo "<script>window.location.replace('cart.php');</script>";
+}
+
 if (isset($_POST["submit"])) { 
-   
+    if($_POST["submit"] == "Bestelling Plaatsen"){
+        if(count($cart) > 0){
+            $voornaam = $_POST['voornaam'];
+            $tussenvoegsel = $_POST['tussenvoegsel'];
+            $achternaam = $_POST['achternaam'];
+            $emailadres = $_POST['emailadres'];
+            $adres = $_POST['adres'];
+            $land = $_POST['land'];
+            $postcode = $_POST['postcode'];
+            $woonplaats = $_POST['woonplaats'];
+            $telefoon = $_POST['telefoon'];
+            $betalingswijze = $_POST['betalingswijze'];
+
+            $ordernummer = CreateOrder($voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, date("Y-m-d H:i:s"));
+
+            if (isset($cart)) {
+                foreach ($cart as $item => $amount) {
+                    $product = getStockItem($item, $databaseConnection);
+                    CreateOrderLine($ordernummer, $product["StockItemID"], $product["StockItemName"], $amount, $product['SellPrice'], $product['TaxRate']);
+                    unset($cart[$item]);
+                    saveCart($cart);
+                }
+            }
+            echo "<script>window.location.replace('cart.php');</script>";
+        }
+    }
 }
 ?>
 <body>
@@ -25,7 +54,7 @@ if (isset($_POST["submit"])) {
                 <input type="text" class="checkoutInput" name="adres" value="<?php if($loggedIn){ echo $currentUser[6]; }?>" id="adres" placeholder="Adres*" required>
                 <select style="width: 60%; height: 50px; padding-left: 5px; padding-right: 5px;" class="checkoutInput" id="land" name="land" required>
                     <?php if($loggedIn){
-                       echo '<option value="' . $currentUser[7] . '" selected>' . $currentUser[7] . '</option>';
+                       echo '<option value="' . $currentUser[8] . '" selected>' . $currentUser[8] . '</option>';
                     } else { 
                        echo '<option value="" selected disabled>Land*</option>';
                     }
@@ -277,8 +306,8 @@ if (isset($_POST["submit"])) {
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
-                <input style="width: 39.3%" type="text" class="checkoutInput" name="postcode" value="<?php if($loggedIn){ echo $currentUser[8]; }?>" id="postcode" placeholder="Postcode*" required>
-                <input type="text" class="checkoutInput" name="woonplaats" value="<?php if($loggedIn){ echo $currentUser[9]; }?>" id="woonplaats" placeholder="Woonplaats*" required>
+                <input style="width: 39.3%" type="text" class="checkoutInput" name="postcode" value="<?php if($loggedIn){ echo $currentUser[9]; }?>" id="postcode" placeholder="Postcode*" required>
+                <input type="text" class="checkoutInput" name="woonplaats" value="<?php if($loggedIn){ echo $currentUser[7]; }?>" id="woonplaats" placeholder="Woonplaats*" required>
                 <input type="text" class="checkoutInput" name="telefoon" value="<?php if($loggedIn){ echo $currentUser[10]; }?>" id="telefoon" placeholder="Telefoonnummer (optioneel)">
                 <select style="width: 100%; height: 50px; padding-left: 5px; padding-right: 5px;" class="checkoutInput" id="betalingswijze" name="betalingswijze" required>
                     <option value="" disabled selected>Betalingswijze*</option>
