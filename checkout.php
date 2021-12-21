@@ -278,8 +278,8 @@ if (isset($_POST["submit"])) {
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
                 <input style="width: 39.3%" type="text" class="checkoutInput" name="postcode" value="<?php if($loggedIn){ echo $currentUser[8]; }?>" id="postcode" placeholder="Postcode*" required>
-                <input type="text" class="checkoutInput" name="woonplaats" value="<?= '' ?>" id="woonplaats" placeholder="Woonplaats*" required>
-                <input type="text" class="checkoutInput" name="telefoon" value="<?php if($loggedIn){ echo $currentUser[9]; }?>" id="telefoon" placeholder="Telefoonnummer (optioneel)">
+                <input type="text" class="checkoutInput" name="woonplaats" value="<?php if($loggedIn){ echo $currentUser[9]; }?>" id="woonplaats" placeholder="Woonplaats*" required>
+                <input type="text" class="checkoutInput" name="telefoon" value="<?php if($loggedIn){ echo $currentUser[10]; }?>" id="telefoon" placeholder="Telefoonnummer (optioneel)">
                 <select style="width: 100%; height: 50px; padding-left: 5px; padding-right: 5px;" class="checkoutInput" id="betalingswijze" name="betalingswijze" required>
                     <option value="" disabled selected>Betalingswijze*</option>
                     <option value="ideal">iDEAL</option>
