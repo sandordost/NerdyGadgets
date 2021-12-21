@@ -1,0 +1,115 @@
+/*#region all pages */
+#Content{
+    margin-top:0;
+}
+/*#endregion */
+/*#region Product overview*/
+.ListItem #ProductFrame{
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+    background-color: rgb(44, 44, 59);
+}
+
+.ListItem .ImgFrame{
+    border:none;
+    border-radius: 20px;
+}
+
+.ListItem .StockItemID,
+.ListItem .StockItemName,
+.ListItem .StockItemComments{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    position:relative;
+    left:20px;
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild{
+    top: 80%;
+    right:20px;
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h1,
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h6{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h1{
+    font-weight: bold;
+    font-size:25px;
+}
+
+.ListItem #ProductFrame #StockItemFrameRight .CenterPriceLeftChild h6{
+    font-weight: normal;
+}
+
+.ListItem .StockItemComments{
+    font-weight: normal;
+}
+
+.ListItem .ItemQuantity{
+    position:relative;
+    left:20px;
+}
+
+#SubContent #ResultsArea{
+    margin-top:20px;
+}
+/*#endregion*/
+/*#region filter */
+#FilterFrame{
+    border:none;
+    height:100%;
+    background-color: rgb(56, 56, 72);
+    position:absolute;
+    margin-left: 0;
+    left:0;
+    top:0;
+    margin-top:0;
+    padding-top:50px;
+    z-index: 0;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.40);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55); */
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed !important;
+    top: 0;
+    width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
+}
+
+#FilterFrame .FilterText{
+    font-size:22px;
+}
+
+#FilterFrame #FilterOptions .FilterTopMargin{
+    font-size:17px;
+    color: #e7e7e7;
+}
+
+#FilterFrame #FilterOptions #search_string{
+    border:none;
+    border-radius: 5px;
+    height:30px;
+    font-size:14px;
+}
+
+#FilterFrame #FilterOptions #products_on_page{
+
+}
+
+#FilterFrame #FilterOptions #products_on_page,
+#FilterFrame #FilterOptions #sort{
+    cursor: pointer;
+    border:none;
+    border-radius: 5px;
+    width:100%;
+    height:30px;
+}
+
+/*#endregion */

@@ -202,7 +202,7 @@ if (isset($amount)) {
     <form>
         <div id="FilterOptions">
             <h4 class="FilterTopMargin"><i class="fas fa-search"></i> Zoeken</h4>
-            <input type="text" name="search_string" id="search_string"
+            <input placeholder="Zoeken ..." type="text" name="search_string" id="search_string"
                    value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>"
                    class="form-submit">
             <h4 class="FilterTopMargin"><i class="fas fa-list-ol"></i> Aantal producten op pagina</h4>
@@ -292,7 +292,7 @@ if (isset($amount)) {
 		
 <!-- code deel 4 van User story: Zoeken producten  -->
 
-            <input type="hidden" name="search_string" id="search_string"
+            <input placeholder="Zoeken ..."type="hidden" name="search_string" id="search_string"
                    value="<?php if (isset($_GET['search_string'])) {
                        print ($_GET['search_string']);
                    } ?>">
@@ -331,7 +331,7 @@ if (isset($amount)) {
     }
     ?>
 </div>
-
+<script src="Public/JS/sticky-filter.js"></script>
 <?php
 include __DIR__ . "/footer.php";
 ?>
