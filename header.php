@@ -1,6 +1,6 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
-include "create-tables.php";
+include "database-changes.php";
 
 $databaseConnection = connectToDatabase();
 $currentUser = GetCurrentUserData();

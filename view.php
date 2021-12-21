@@ -90,7 +90,16 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
-                        <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
+                        <div class="price-sticker">
+                        <?php if($StockItem['korting'] > 0) { ?>
+                            <p class="StockItemKortingText">Nu <u><?= sprintf("%.0f", $StockItem['korting'])?>%</u> Korting</p>
+                            <p class="StockItemPriceText-Old"><b><s><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></s></b></p>
+                            <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice'] / 100 * (100 - $StockItem['korting'])); ?></b></p>
+                        <?php } else { ?>
+                            <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
+                        <?php } ?>
+                        </div>
+
                         <h6> Inclusief BTW </h6>
 
                         <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->

@@ -112,7 +112,7 @@ if ($CategoryID == "") {
     }
 
     $Query = "
-                SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice, ROUND(TaxRate * RecommendedRetailPrice / 100 + RecommendedRetailPrice,2) as SellPrice,
+                SELECT SI.StockItemID, SI.korting, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice, ROUND(TaxRate * RecommendedRetailPrice / 100 + RecommendedRetailPrice,2) as SellPrice,
                 QuantityOnHand,
                 (SELECT ImagePath
                 FROM stockitemimages
@@ -147,7 +147,7 @@ if ($CategoryID == "") {
 
 if ($CategoryID !== "") {
 $Query = "
-           SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice,
+           SELECT SI.StockItemID, SI.StockItemName, SI.korting, SI.MarketingComments, TaxRate, RecommendedRetailPrice,
            ROUND(SI.TaxRate * SI.RecommendedRetailPrice / 100 + SI.RecommendedRetailPrice,2) as SellPrice,
            QuantityOnHand,
            (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
@@ -193,6 +193,10 @@ if (isset($amount)) {
     function berekenVerkoopPrijs($adviesPrijs, $btw) {
 		return $btw * $adviesPrijs / 100 + $adviesPrijs;
     }
+
+function berekenPrijsMetKorting($prijs, $korting){
+    return $prijs / 100 * (100 - $korting);
+}
 ?>
 
 <!-- code deel 3 van User story: Zoeken producten : de html -->
@@ -272,7 +276,15 @@ if (isset($amount)) {
 
                     <div id="StockItemFrameRight">
                         <div class="CenterPriceLeftChild">
-                            <h1 class="StockItemPriceText"><?php print sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></h1>
+                            <?php if($row['korting'] > 0) { ?>
+                                <p class="StockItemKortingText">Nu <u><?= sprintf("%.0f", $row['korting'])?>%</u> Korting</p>
+                                <div class="price-sticker-browse">
+                                    <h1 class="StockItemPriceText old-price"><s><?php print sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></s></h1>
+                                    <h1 class="StockItemPriceText"><?php print sprintf(" %0.2f", berekenPrijsMetKorting(berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"]), $row['korting'])); ?></h1>
+                                </div>
+                            <?php } else { ?>
+                                <h1 class="StockItemPriceText"><?php print sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></h1>
+                            <?php } ?>
                             <h6>Inclusief BTW </h6><br>
                         </div>
                     </div>

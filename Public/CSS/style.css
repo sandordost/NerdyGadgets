@@ -191,7 +191,7 @@ ul#ul-class-navigation li {
     position: absolute;
     height: 100%;
     right: 0;
-    width: 200px;
+    width: 400px;
 }
 .CenterPriceLeftChild {
     position: relative;
@@ -554,4 +554,42 @@ ul#ul-class-price li {
     float: left;
     margin-top: 3px;
     margin-right: 10px;
+}
+
+#StockItemHeaderLeft .CenterPriceLeftChild .price-sticker{
+    display: flex;
+    white-space: nowrap;
+    justify-content: flex-end;
+}
+
+#StockItemHeaderLeft .CenterPriceLeftChild .price-sticker .StockItemPriceText{
+    padding: 0 10px 0 10px;
+}
+
+#StockItemHeaderLeft .CenterPriceLeftChild .price-sticker .StockItemPriceText-Old{
+    padding: 0 0 0 10px;
+    align-self: center;
+    margin:0;
+}
+
+#StockItemHeaderLeft .CenterPriceLeftChild .price-sticker .StockItemKortingText{
+    padding: 0 10px 0 10px;
+    align-self: center;
+    margin:0;
+}
+
+#StockItemFrameRight .price-sticker-browse{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#StockItemFrameRight .price-sticker-browse h1{
+    padding-left:10px;
+}
+#StockItemFrameRight .price-sticker-browse h1{
+    padding-left:10px;
+}
+#StockItemFrameRight .price-sticker-browse .old-price {
+    color:white;
+    font-size:17px !important;
 }

@@ -5,6 +5,10 @@ include "cartfuncties.php";
 $cart = getCart();
 arsort($cart);
 
+function berekenPrijsMetKorting($prijs, $korting){
+    return $prijs / 100 * (100 - $korting);
+}
+
 if (isset($_POST["submit"])) {
     if ($_POST["submit"] == "Verwijderen") {
         $stockItemID = $_POST["stockItemID"];
@@ -93,7 +97,7 @@ if (isset($_POST["submit"])) {
     }
 
     echo "<h2><a style='color: white' href='view.php?id=" . $product['StockItemID'] . "'>" . $product['StockItemName'] . "</a></h2>";
-    echo "<br>Totaalprijs: €" . number_format($product['SellPrice'] * $amount, 2);
+    echo "<br>Totaalprijs: €" . number_format(berekenPrijsMetKorting($product['SellPrice'] * $amount, $product['korting']), 2);
 
     ?>
     <form method="post">
@@ -111,7 +115,7 @@ if (isset($_POST["submit"])) {
     </form>
 </div>
 <?php
-$totaalprijs += ($product['SellPrice'] * $amount);
+$totaalprijs += (berekenPrijsMetKorting($product['SellPrice'] * $amount, $product['korting']));
 }
 }
 if (count($cart) > 0) { 
