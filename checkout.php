@@ -5,6 +5,10 @@ include "cartfuncties.php";
 $cart = getCart();
 arsort($cart);
 
+function berekenPrijsMetKorting($prijs, $korting){
+    return $prijs / 100 * (100 - $korting);
+}
+
 if(count($cart) < 1){
     echo "<script>window.location.replace('cart.php');</script>";
 }
@@ -330,6 +334,7 @@ if (isset($_POST["submit"])) {
             <hr style="background: white; width: 70px; margin-left: 0">
             <?php
             if (isset($cart)) {
+                $totaalprijs_zonderkorting = 0;
                 $totaalprijs = 0;
                 foreach ($cart as $item => $amount) {
                     $product = getStockItem($item, $databaseConnection);
@@ -348,18 +353,32 @@ if (isset($_POST["submit"])) {
                         <a style="color: white" href="view.php?id=<?= $item ?>"><b><?= $product['StockItemName'] ?></b></a><br>
                         Hoeveelheid: <?= $amount ?><br>
                         Aantal op voorraad: <?= $product['Quantity'] ?><br>
-                        Totaalprijs: €<?= number_format(($product['SellPrice'] * $amount), 2) ?><br>
+                        Totaalprijs: €<?= number_format(berekenPrijsMetKorting($product['SellPrice'] * $amount, $product['korting']), 2) ?><br>
                     </div>
                     <br>
                     <?php
-                    $totaalprijs += ($product['SellPrice'] * $amount);
+                    $totaalprijs_zonderkorting += $product['SellPrice'] * $amount;
+                    $totaalprijs += berekenPrijsMetKorting($product['SellPrice'] * $amount, $product['korting']);
                 }
             }
             if (isset($totaalprijs)){
             ?>
-            <h6><?php if($totaalprijs < 30){ echo "€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
+            <h6>
+            <?php
+            if($totaalprijs < 30) {
+                echo "€5.50 verzendkosten";
+                $totaalprijs += 5.5;
+                $totaalprijs_zonderkorting += 5.5;
+            }
+            else {
+                echo "Gratis verzending";
+            } ?>
+            </h6>
             <hr style="background: white; width: 250px; margin-left: 0; margin-top: -5px; border: 1px solid; margin-bottom: 0   ;">
             <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
+            <?php } ?>
+            <?php if($totaalprijs != $totaalprijs_zonderkorting){ ?>
+                <h4 style="color:#7d9b69;">Je bespaart: €<?= number_format($totaalprijs_zonderkorting - $totaalprijs, 2)?></h4>
             <?php } ?>
         </div>
     </div>

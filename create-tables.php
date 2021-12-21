@@ -1,6 +1,4 @@
 <?php
-include "database.php";
-
 $conn = connectToDatabase();
 //Create tables if they don't exist yet:
 
@@ -40,7 +38,7 @@ function createBestelling($conn) {
         Bestellingsdatum DATE NOT NULL,
         Verzonden TINYINT(1),
         Betaald TINYINT(1),
-        klantId INT(11) UNIQUE
+        klantId INT(11)
         );";
     $stmt = $conn->prepare($sql);
     $stmt->execute();

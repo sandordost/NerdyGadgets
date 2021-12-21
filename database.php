@@ -57,7 +57,7 @@ function getStockItem($id, $databaseConnection) {
     $Result = null;
 
     $Query = " 
-           SELECT SI.StockItemID, 
+           SELECT SI.StockItemID, korting   ,
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
             StockItemName,
             CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
