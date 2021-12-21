@@ -39,7 +39,8 @@ function createBestelling($conn) {
         Betalingswijze VARCHAR(30) NOT NULL,
         Bestellingsdatum DATE NOT NULL,
         Verzonden TINYINT(1),
-        Betaald TINYINT(1)
+        Betaald TINYINT(1),
+        klantId INT(11) UNIQUE
         );";
     $stmt = $conn->prepare($sql);
     $stmt->execute();

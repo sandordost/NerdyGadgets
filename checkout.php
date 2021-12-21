@@ -22,8 +22,8 @@ if (isset($_POST["submit"])) {
             $woonplaats = $_POST['woonplaats'];
             $telefoon = $_POST['telefoon'];
             $betalingswijze = $_POST['betalingswijze'];
-
-            $ordernummer = CreateOrder($voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, date("Y-m-d H:i:s"));
+            $klantId = GetCurrentUserData()[0];
+            $ordernummer = CreateOrder($voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, date("Y-m-d H:i:s"), $klantId);
 
             if (isset($cart)) {
                 foreach ($cart as $item => $amount) {

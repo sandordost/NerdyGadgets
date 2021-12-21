@@ -204,15 +204,15 @@ function generatePepper(){
     return chr(rand(65,90));
 }
 
-function CreateOrder($voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, $bestellingsdatum)
+function CreateOrder($voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, $bestellingsdatum, $klantId)
 {
     $Connection = connectToDatabase();
 
-    $sql = "INSERT INTO bestelling (Voornaam, Tussenvoegsel, Achternaam, Emailadres, Adres, Land, Postcode, Woonplaats, Telefoon, Betalingswijze, Bestellingsdatum) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    $sql = "INSERT INTO bestelling (Voornaam, Tussenvoegsel, Achternaam, Emailadres, Adres, Land, Postcode, Woonplaats, Telefoon, Betalingswijze, Bestellingsdatum, klantId) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         ";
     $stmt = $Connection->prepare($sql);
-    $stmt->bind_param('sssssssssss', $voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, $bestellingsdatum);
+    $stmt->bind_param('sssssssssssi', $voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, $bestellingsdatum, $klantId);
     $stmt->execute();
 
 
