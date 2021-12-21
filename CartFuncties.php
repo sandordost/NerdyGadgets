@@ -35,5 +35,5 @@ function updateProductInCart($stockItemID, $amount)
         $cart[$stockItemID] = $amount;
     }
     saveCart($cart);
-    header("location: cart.php");
+    echo "<script>location.href = 'cart.php'</script>";
 }
