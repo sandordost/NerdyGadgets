@@ -116,6 +116,11 @@ $totaalprijs += (berekenPrijsMetKorting($product['SellPrice'] * $amount, $produc
 }
 if (count($cart) > 0) {
 
+if (isset($totaalprijs)){
+    ?>
+
+    <h6><?php if($totaalprijs < 30){ echo "€" . number_format((30 - $totaalprijs), 2) . " extra benodigd voor gratis verzending<br>€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
+    <?php
     if(isset($_GET['kortingscode'])) {
         if (!empty($_GET['kortingscode'])) {
             $kortingscode = $_GET['kortingscode'];
@@ -124,11 +129,7 @@ if (count($cart) > 0) {
             $prijsMetKortingscode = number_format(berekenKortingscode($conn, $totaalprijs, $kortingscode), 2);
         }
     }
-
-if (isset($totaalprijs)){
     ?>
-
-    <h6><?php if($totaalprijs < 30){ echo "€" . number_format((30 - $totaalprijs), 2) . " extra benodigd voor gratis verzending<br>€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
     <hr style="background: white; width: 250px; margin-left: 0; margin-top: -5px; border: 1px solid; margin-bottom: 0   ;">
     <?php if(isset($korting) && $korting != null && !empty($korting)){ ?>
         <h4><s>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></s></h4>
