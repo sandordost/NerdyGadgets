@@ -24,7 +24,7 @@ if(isset($_GET['error'])){
     if(!empty($errormsg)){
 
         if($errormsg == "login"){
-            $message_text = "Inloggen is mislukt, controlleer of de gegevens correct zijn ingevoerd.";
+            $message_text = "Inloggen is mislukt, controleer of de gegevens correct zijn ingevoerd.";
         }
     }
 }
