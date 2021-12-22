@@ -65,7 +65,8 @@ function getStockItem($id, $databaseConnection) {
             SearchDetails, 
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
             (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath,
-            TaxRate   
+            TaxRate,
+            IsChillerStock AS ChillerStock   
             FROM stockitems SI 
             JOIN stockitemholdings SIH USING(stockitemid)
             JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
@@ -229,4 +230,22 @@ function CreateOrderLine($BestellingID, $StockItemID, $Beschrijving, $Hoeveelhei
     $stmt = $Connection->prepare($sql);
     $stmt->bind_param('ssssss', $BestellingID, $StockItemID, $Beschrijving, $Hoeveelheid, $Prijs, $BTW);
     $stmt->execute();
+}
+
+function GetChillerTemperature($id)
+{
+    $result = null;
+    $Connection = connectToDatabase();
+
+    $sql ="SELECT * 
+    FROM coldroomtemperatures 
+    WHERE ColdRoomSensorNumber = ?
+    ";
+    $stmt = $Connection->prepare($sql);
+    $stmt->bind_param('s', $id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_row();
 }

@@ -4,6 +4,7 @@ include "database-changes.php";
 
 $databaseConnection = connectToDatabase();
 $currentUser = GetCurrentUserData();
+$ChillerTemp = GetChillerTemperature(4);
 
 $loggedIn = false;
 if($currentUser != null){

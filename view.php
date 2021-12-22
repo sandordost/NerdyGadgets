@@ -128,6 +128,7 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                 <th>Naam</th>
                 <th>Data</th>
                 </thead>
+            
                 <?php
                 foreach ($CustomFields as $SpecName => $SpecText) { ?>
                     <tr>
@@ -146,7 +147,18 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                             ?>
                         </td>
                     </tr>
+                <?php } 
+                    if($StockItem['ChillerStock'] > 0){ ?>
+                <tr>
+                    <td>
+                        Temperatuur
+                    </td>
+                    <td>
+                        <?= $ChillerTemp[3] ?>°C
+                    </td>
+                <tr>
                 <?php } ?>
+                </td>
                 </table><?php
             } else { ?>
 
