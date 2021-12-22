@@ -593,3 +593,22 @@ ul#ul-class-price li {
     color:white;
     font-size:17px !important;
 }
+
+#kortingscode-form{
+    display:flex;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
+
+#kortingscode-form .kortingscode-input{
+    height:40px;
+    width:200px;
+    margin-right:10px;
+}
+
+#kortingscode-form .kortingscode-input[type=submit]{
+    border:none;
+    border-radius: 15px;
+    background-color: #3c4962;
+    color:white;
+}

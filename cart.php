@@ -5,10 +5,6 @@ include "cartfuncties.php";
 $cart = getCart();
 arsort($cart);
 
-function berekenPrijsMetKorting($prijs, $korting){
-    return $prijs / 100 * (100 - $korting);
-}
-
 if (isset($_POST["submit"])) {
     if ($_POST["submit"] == "Verwijderen") {
         $stockItemID = $_POST["stockItemID"];
@@ -118,21 +114,54 @@ if (isset($_POST["submit"])) {
 $totaalprijs += (berekenPrijsMetKorting($product['SellPrice'] * $amount, $product['korting']));
 }
 }
-if (count($cart) > 0) { 
+if (count($cart) > 0) {
+
+    if(isset($_GET['kortingscode'])) {
+        if (!empty($_GET['kortingscode'])) {
+            $kortingscode = $_GET['kortingscode'];
+            $korting = GetKortingFromCode($conn, $kortingscode);
+            $_SESSION['kortingscode'] = $kortingscode;
+            $prijsMetKortingscode = number_format(berekenKortingscode($conn, $totaalprijs, $kortingscode), 2);
+        }
+    }
+
 if (isset($totaalprijs)){
     ?>
+
     <h6><?php if($totaalprijs < 30){ echo "€" . number_format((30 - $totaalprijs), 2) . " extra benodigd voor gratis verzending<br>€5.50 verzendkosten"; $totaalprijs += 5.5; } else { echo "Gratis verzending"; } ?></h6>
     <hr style="background: white; width: 250px; margin-left: 0; margin-top: -5px; border: 1px solid; margin-bottom: 0   ;">
-    <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
+    <?php if(isset($korting) && $korting != null && !empty($korting)){ ?>
+        <h4><s>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></s></h4>
+    <?php } else { ?>
+        <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
+    <?php } ?>
     <?php 
 }
 ?>
     <br>
+    <?php
+    if(!isset($korting) || $korting == null){
+        if(isset($kortingscode) ||!empty($kortingscode))
+        echo "<p style='color:#b65e5e'>Kortingscode: '$kortingscode' wordt niet herkent</p>";
+    }
+    else {
+        if ($korting[1] == 1) {
+            echo "<p style='color:#88cb76'>Kortingscode <b>'$kortingscode'</b> toegepast (" . number_format($korting[0], 1) . "% korting)</p>";
+        } else {
+            echo "<p style='color:#88cb76'>Kortingscode <b>'$kortingscode'</b> toegepast (€" . $korting[0] . " korting)</p>";
+        }
+        echo "<h3>Met kortingscode: €$prijsMetKortingscode</h3>";
+    }
+    ?>
+    <form id="kortingscode-form" action="cart.php" method="get">
+        <input placeholder="kortingscode ..." type="text" name="kortingscode" class="kortingscode-input">
+        <input class="kortingscode-input" type="submit" value="kortingscode toepassen">
+    </form>
+
     <form method="post" action="checkout.php">
         <input type="submit" name="submit" value="Afrekenen" style="width: 300px " class="Knop">
     </form>
-<?php 
-} else { ?>
+<?php } else { ?>
     <h4>Uw winkelwagen is leeg.</h4>
     <h4>Zoek <a href="categories.php">hier</a> naar producten</h4>
 <?php

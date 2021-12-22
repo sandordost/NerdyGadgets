@@ -58,6 +58,18 @@ function createBestellingsLijn($conn) {
     $stmt->execute();
 }
 
+function createKortingscodes($conn){
+    $sql = "CREATE TABLE IF NOT EXISTS kortingscodes(
+        codeId INT PRIMARY KEY AUTO_INCREMENT,
+        code VARCHAR(50) UNIQUE,
+        korting DECIMAL(12,2) DEFAULT(0),
+        inPercentage TINYINT(1) DEFAULT(0)
+        );";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+}
+
 createKlant($conn);
 createBestelling($conn);
 createBestellingsLijn($conn);
+createKortingscodes($conn);
