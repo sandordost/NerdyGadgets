@@ -5,10 +5,6 @@ include "cartfuncties.php";
 $cart = getCart();
 arsort($cart);
 
-function berekenPrijsMetKorting($prijs, $korting){
-    return $prijs / 100 * (100 - $korting);
-}
-
 if(count($cart) < 1){
     echo "<script>window.location.replace('cart.php');</script>";
 }
@@ -375,7 +371,23 @@ if (isset($_POST["submit"])) {
             } ?>
             </h6>
             <hr style="background: white; width: 250px; margin-left: 0; margin-top: -5px; border: 1px solid; margin-bottom: 0   ;">
-            <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
+            <?php if(isset($_SESSION['kortingscode']) && !empty($_SESSION['kortingscode'])){
+                $korting = GetKortingFromCode($conn, $_SESSION['kortingscode']);
+                $kortingscode = $_SESSION['kortingscode'];
+                if(isset($korting) && $korting != null && !empty($korting)) { ?>
+                    <h4><s>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></s></h4>
+                    <?php
+                    if ($korting[1] == 1) {
+                        echo "<p style='color:#88cb76'>Kortingscode <b>'$kortingscode'</b> toegepast (" . number_format($korting[0], 1) . "% korting)</p>";
+                    } else {
+                        echo "<p style='color:#88cb76'>Kortingscode <b>'$kortingscode'</b> toegepast (€" . $korting[0] . " korting)</p>";
+                    }
+                    ?>
+                    <h4>Totaal: €<b><?= number_format(berekenKortingscode($conn, $totaalprijs, $kortingscode), 2) ?></b></h4>
+                <?php } else{ ?>
+                <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
+                <?php }} ?>
+
             <?php } ?>
             <?php if($totaalprijs != $totaalprijs_zonderkorting){ ?>
                 <h4 style="color:#7d9b69;">Je bespaart: €<?= number_format($totaalprijs_zonderkorting - $totaalprijs, 2)?></h4>
