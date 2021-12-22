@@ -15,8 +15,4 @@ function AddKortingToProduct($conn){
     }
 }
 
-function AddKortingscodes(){
-    $INSERT INTO `kortingscodes` (`codeId`, `code`, `korting`, `inPercentage`) VALUES (NULL, 'nerdygadgets', '55', '0');
-}
-
 AddKortingToProduct($conn);
