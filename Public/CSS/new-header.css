@@ -235,3 +235,16 @@
 #info-row i{
     padding: 0 5px 0 5px;
 }
+
+#info-row.confirmation-message{
+    background-color: #466088;
+}
+
+#info-row.error-message{
+    background-color: #884646;
+}
+
+#info-row.confirmation-message #info-row-text,
+#info-row.error-message #info-row-text{
+    color:white;
+}

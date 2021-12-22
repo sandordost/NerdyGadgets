@@ -26,8 +26,13 @@ if(isset($email)){
 
             //Check if password > 5
             if(strlen($wachtwoord) > 5){
-                CreateUser($email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam, $adres, $land, $postcode, $phone, $woonplaats);
-                header("location: login.php?bestiging=true");
+                try {
+                    CreateUser($email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam, $adres, $land, $postcode, $phone, $woonplaats);
+                    header("location: login.php?bestiging=true");
+                }
+                catch(Exception $exception){
+                    header("location: registratie.php?error=5");
+                }
             }
             else{
                 header("location: registratie.php?error=4");

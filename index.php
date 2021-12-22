@@ -1,5 +1,6 @@
 <!-- dit is het bestand dat wordt geladen zodra je naar de website gaat -->
 <?php
+include "message-popup.php";
 include __DIR__ . "/header.php";
 ?>
 <div class="IndexStyle">

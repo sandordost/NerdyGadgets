@@ -83,6 +83,11 @@ if($currentUser != null){
     <div id="info-row">
         <span id="info-row-text"><i class="fas fa-fire-alt fa-rotate-270"></i><i class="fas fa-sleigh"></i><b>Gratis verzendkosten</b> bij besteding van <u>minimaal 30 euro</u></span>
     </div>
+    <?php if(isset($show_message) && $show_message == true) { ?>
+        <div id="info-row" class="<?= $message_class?>">
+            <span id="info-row-text"><?= $message_text?></span>
+        </div>
+    <?php } ?>
 
 <!-- Account popup -->
     <div id="account-popup" class="hidden">

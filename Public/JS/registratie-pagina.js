@@ -26,3 +26,6 @@ else if(error_to_show === 3){
 else if(error_to_show === 4){
     errorMessageText.innerText = "Uw wachtwoord is te kort, zorg dat het wachtwoord langer is dan 5 tekens";
 }
+else if(error_to_show === 5){
+    errorMessageText.innerText = "Er is iets mis gegaan, mogelijk is uw email adres al in gebruik";
+}
