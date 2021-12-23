@@ -31,6 +31,7 @@ if($currentUser != null){
     <link rel="stylesheet" href="Public/CSS/registratie-pagina.css">
     <link rel="icon" type="image/x-icon" href="Public/Img/NerdyGadgetsLogo.ico">
     <link rel="stylesheet" href="Public/CSS/nieuwe-aanpassingen.css">
+    <link rel="stylesheet" href="Public/CSS/view-profile.css">
 </head>
 <body>
     <div class="new-header">
@@ -43,7 +44,6 @@ if($currentUser != null){
             <div class="categories">
                 <?php
                 $HeaderStockGroups = getHeaderStockGroups($databaseConnection);
-
                 foreach ($HeaderStockGroups as $HeaderStockGroup) {
                     ?>
                     <div class="category">
@@ -65,7 +65,7 @@ if($currentUser != null){
             <div id="account-container">
                 <div id="profile-info">
                     <?php if($loggedIn){ ?>
-                        <a id="account-naam" href=""><?=$currentUser[3]?></a>
+                        <a id="account-naam" href=""><?=$currentUser['voornaam']?></a>
                     <?php } else { ?>
                         <a id="account-naam" href="">Gast</a>
                     <?php } ?>
@@ -92,6 +92,7 @@ if($currentUser != null){
 <!-- Account popup -->
     <div id="account-popup" class="hidden">
         <?php if($loggedIn) { ?>
+            <a href="view-profile.php">Gegevens bekijken</a>
             <a href="login.php?action=logout" class="logout-button" id="logout-button">Uitloggen</a>
         <?php } else { ?>
             <div id="register-login-popup">

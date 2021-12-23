@@ -47,14 +47,14 @@ if (isset($_POST["submit"])) {
                 <input type="radio" class="checkoutRadio" name="geslacht" value="Man" id="man" required><label for="man" class="checkoutLabel">Man</label>
                 <input type="radio" class="checkoutRadio" name="geslacht" value="Vrouw" id="vrouw" required><label for="vrouw" class="checkoutLabel">Vrouw</label>
                 <input type="radio" class="checkoutRadio" name="geslacht" value="Onbepaald" id="onbepaald" required><label for="onbepaald" class="checkoutLabel">Onbepaald</label><br>
-                <input style="width: 32.9%" type="text" class="checkoutInput" name="voornaam" value="<?php if($loggedIn){ echo $currentUser[3]; }?>" id="voornaam" placeholder="Voornaam*" required>
-                <input style="width: 32.8%" type="text" class="checkoutInput" name="tussenvoegsel" value="<?php if($loggedIn){ echo $currentUser[4]; }?>" id="tussenvoegsel" placeholder="Tussenvoegsel">
-                <input style="width: 32.9%" type="text" class="checkoutInput" name="achternaam" value="<?php if($loggedIn){ echo $currentUser[5]; }?>" id="achternaam" placeholder="Achternaam*" required>
-                <input type="email" class="checkoutInput" name="emailadres" value="<?php if($loggedIn){ echo $currentUser[1]; }?>" id="emailadres" placeholder="E-mailadres*" required>
-                <input type="text" class="checkoutInput" name="adres" value="<?php if($loggedIn){ echo $currentUser[6]; }?>" id="adres" placeholder="Adres*" required>
+                <input style="width: 32.9%" type="text" class="checkoutInput" name="voornaam" value="<?php if($loggedIn){ echo $currentUser['voornaam']; }?>" id="voornaam" placeholder="Voornaam*" required>
+                <input style="width: 32.8%" type="text" class="checkoutInput" name="tussenvoegsel" value="<?php if($loggedIn){ echo $currentUser['tussenvoegsel']; }?>" id="tussenvoegsel" placeholder="Tussenvoegsel">
+                <input style="width: 32.9%" type="text" class="checkoutInput" name="achternaam" value="<?php if($loggedIn){ echo $currentUser['achternaam']; }?>" id="achternaam" placeholder="Achternaam*" required>
+                <input type="email" class="checkoutInput" name="emailadres" value="<?php if($loggedIn){ echo $currentUser['email']; }?>" id="emailadres" placeholder="E-mailadres*" required>
+                <input type="text" class="checkoutInput" name="adres" value="<?php if($loggedIn){ echo $currentUser['adres']; }?>" id="adres" placeholder="Adres*" required>
                 <select style="width: 60%; height: 50px; padding-left: 5px; padding-right: 5px;" class="checkoutInput" id="land" name="land" required>
                     <?php if($loggedIn){
-                       echo '<option value="' . $currentUser[8] . '" selected>' . $currentUser[8] . '</option>';
+                       echo '<option value="' . $currentUser['land'] . '" selected>' . $currentUser['land'] . '</option>';
                     } else { 
                        echo '<option value="" selected disabled>Land*</option>';
                     }
@@ -306,9 +306,9 @@ if (isset($_POST["submit"])) {
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
-                <input style="width: 39.3%" type="text" class="checkoutInput" name="postcode" value="<?php if($loggedIn){ echo $currentUser[9]; }?>" id="postcode" placeholder="Postcode*" required>
-                <input type="text" class="checkoutInput" name="woonplaats" value="<?php if($loggedIn){ echo $currentUser[7]; }?>" id="woonplaats" placeholder="Woonplaats*" required>
-                <input type="text" class="checkoutInput" name="telefoon" value="<?php if($loggedIn){ echo $currentUser[10]; }?>" id="telefoon" placeholder="Telefoonnummer (optioneel)">
+                <input style="width: 39.3%" type="text" class="checkoutInput" name="postcode" value="<?php if($loggedIn){ echo $currentUser['postcode']; }?>" id="postcode" placeholder="Postcode*" required>
+                <input type="text" class="checkoutInput" name="woonplaats" value="<?php if($loggedIn){ echo $currentUser['woonplaats']; }?>" id="woonplaats" placeholder="Woonplaats*" required>
+                <input type="text" class="checkoutInput" name="telefoon" value="<?php if($loggedIn){ echo $currentUser['telefoon']; }?>" id="telefoon" placeholder="Telefoonnummer (optioneel)">
                 <select style="width: 100%; height: 50px; padding-left: 5px; padding-right: 5px;" class="checkoutInput" id="betalingswijze" name="betalingswijze" required>
                     <option value="" disabled selected>Betalingswijze*</option>
                     <option value="ideal">iDEAL</option>
