@@ -179,7 +179,7 @@ function GetCurrentUserData(){
 
     $result = $stmt->get_result();
 
-    return $result->fetch_row();
+    return $result->fetch_assoc();
 }
 
 function encryptPassword($password, $salt, $pepper){
