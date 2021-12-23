@@ -22,7 +22,7 @@ if (isset($_POST["submit"])) {
             $woonplaats = $_POST['woonplaats'];
             $telefoon = $_POST['telefoon'];
             $betalingswijze = $_POST['betalingswijze'];
-            $klantId = GetCurrentUserData()[0];
+            $klantId = GetCurrentUserData()['klantId'];
             $ordernummer = CreateOrder($voornaam, $tussenvoegsel, $achternaam, $emailadres, $adres, $land, $postcode, $woonplaats, $telefoon, $betalingswijze, date("Y-m-d H:i:s"), $klantId);
 
             if (isset($cart)) {
@@ -386,7 +386,9 @@ if (isset($_POST["submit"])) {
                     <h4>Totaal: €<b><?= number_format(berekenKortingscode($conn, $totaalprijs, $kortingscode), 2) ?></b></h4>
                 <?php } else{ ?>
                 <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
-                <?php }} ?>
+                <?php }} else{ ?>
+                    <h4>Totaal: €<b><?= number_format($totaalprijs, 2) ?></b></h4>
+                <?php } ?>
 
             <?php } ?>
             <?php if($totaalprijs != $totaalprijs_zonderkorting){ ?>
