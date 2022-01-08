@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
             <form method="post">
                 <input type="radio" class="checkoutRadio" name="geslacht" value="Man" id="man" required><label for="man" class="checkoutLabel">Man</label>
                 <input type="radio" class="checkoutRadio" name="geslacht" value="Vrouw" id="vrouw" required><label for="vrouw" class="checkoutLabel">Vrouw</label>
-                <input type="radio" class="checkoutRadio" name="geslacht" value="Onbepaald" id="onbepaald" required><label for="onbepaald" class="checkoutLabel">Onbepaald</label><br>
+                <input type="radio" class="checkoutRadio" name="geslacht" value="Zeg ik liever niet" id="Zeg ik liever niet" required><label for="Zeg ik liever niet" class="checkoutLabel">Zeg ik liever niet</label><br>
                 <input style="width: 32.9%" type="text" class="checkoutInput" name="voornaam" value="<?php if($loggedIn){ echo $currentUser['voornaam']; }?>" id="voornaam" placeholder="Voornaam*" required>
                 <input style="width: 32.8%" type="text" class="checkoutInput" name="tussenvoegsel" value="<?php if($loggedIn){ echo $currentUser['tussenvoegsel']; }?>" id="tussenvoegsel" placeholder="Tussenvoegsel">
                 <input style="width: 32.9%" type="text" class="checkoutInput" name="achternaam" value="<?php if($loggedIn){ echo $currentUser['achternaam']; }?>" id="achternaam" placeholder="Achternaam*" required>
