@@ -8,7 +8,7 @@ function connectToDatabase() {
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Set MySQLi to throw exceptions
     try {
-        $Connection = mysqli_connect("localhost", "root", "root", "nerdygadgets");
+        $Connection = mysqli_connect("localhost", "bezoeker", "", "nerdygadgets");
         mysqli_set_charset($Connection, 'latin1');
         $DatabaseAvailable = true;
     } catch (mysqli_sql_exception $e) {
@@ -148,8 +148,8 @@ function CreateUser($email, $wachtwoord, $voornaam, $tussenvoegsel, $achternaam,
 
     $encryptedPass = encryptPassword($wachtwoord, $salt, $pepper);
 
-    $sql = "INSERT INTO klant (email, password, voornaam, tussenvoegsel, achternaam, adres, land, postcode, telefoon, salt, woonplaats) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $sql = "START TRANSACTION INSERT INTO klant (email, password, voornaam, tussenvoegsel, achternaam, adres, land, postcode, telefoon, salt, woonplaats) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); COMMIT;";
     $stmt = $Connection->prepare($sql);
     $stmt->bind_param('sssssssssss', $email, $encryptedPass, $voornaam, $tussenvoegsel, $achternaam,
         $adres, $land, $postcode, $phone, $salt, $woonplaats);

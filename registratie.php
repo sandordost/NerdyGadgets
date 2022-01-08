@@ -63,7 +63,7 @@ include "header.php";
 
             <div class="inputwithlabel">
                 <label for="postcode-input">Postcode</label>
-                <input placeholder="1234AB XZ" type="text" name="postcode" id="postcode-input">
+                <input placeholder="1234 XZ" type="text" name="postcode" id="postcode-input">
             </div>
 
             <div class="inputwithlabel">
